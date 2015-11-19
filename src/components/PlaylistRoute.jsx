@@ -2,8 +2,7 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import * as actionCreators from '../action_creators';
-import Loader from './Loader';
-import Playlist from './Playlist';
+import PlaylistScreen from './PlaylistScreen';
 
 export const PlaylistRoute = React.createClass({
   mixins: [PureRenderMixin],
@@ -14,7 +13,7 @@ export const PlaylistRoute = React.createClass({
   },
 
   render: function() {
-    return this.props.playlist.get('loaded') ? <Playlist {...this.props} /> : <Loader message="Loading tracks" />;
+    return <PlaylistScreen {...this.props}></PlaylistScreen>
   }
 });
 

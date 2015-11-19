@@ -24,6 +24,7 @@ function setCurrentPlaylist(state, playlist) {
 
   return state.set('playlist', Map({
     id: playlist.id,
+    name: playlist.name,
     loaded: true,
     tracks: fromJS(playlist.tracks)
   }));

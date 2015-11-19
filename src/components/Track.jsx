@@ -1,16 +1,19 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {Link} from 'react-router';
+import LineItem from './LineItem';
 
 export default React.createClass({
   mixins: [PureRenderMixin],
 
+  _handleVote: function() {
+    console.log('Voting for', this.props.track.get('id'));
+  },
+
   render: function() {
-    return (
-      <div>
-        <strong>{this.props.track.get('title')}</strong>
-        <em>{this.props.track.get('artist')}</em>
-      </div>
-    )
+    return <LineItem firstLine={this.props.track.get('title')}
+                     secondLine={this.props.track.get('artist')}
+                     icon={"heart"}
+                     onAction={this._handleVote}
+                     index={this.props.index}></LineItem>
   }
 });
