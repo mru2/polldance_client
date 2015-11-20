@@ -8,7 +8,8 @@ const styles = {
     width: '100%',
     boxSizing: 'border-box',
     position: 'absolute',
-    borderBottom: '1px solid #f4f4f4'
+    borderBottom: '1px solid #f4f4f4',
+    backgroundColor: '#ffffff'
   },
   containerLeft: {
     marginRight: 72,
@@ -55,6 +56,8 @@ export default React.createClass({
 
   transform: function() {
     return {
+      zIndex: 1000 - this.props.index,
+      transition: 'transform linear 300ms',
       transform: 'translateY(' + 72 * this.props.index + 'px)'
     }
   },
