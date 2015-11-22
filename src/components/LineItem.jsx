@@ -57,7 +57,7 @@ export default React.createClass({
   transform: function() {
     return {
       zIndex: 1000 - this.props.index,
-      transition: 'transform linear 300ms',
+      transition: 'transform ease 200ms',
       transform: 'translateY(' + 72 * this.props.index + 'px)'
     }
   },

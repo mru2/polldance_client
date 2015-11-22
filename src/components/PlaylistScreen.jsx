@@ -1,7 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Loader from './Loader';
-import Header from './Header';
+import PlaylistHeaderSearch from './PlaylistHeaderSearch';
 import Track from './Track';
 
 export default React.createClass({
@@ -14,9 +14,15 @@ export default React.createClass({
     else {
       return (
         <div>
-          <Header title={this.props.playlist.get('name')}
-                  icon='refresh'></Header>
-                { this.props.playlist.get('tracks').map( (track, index) => <Track key={track.get('id')} track={track} index={index + 1} /> ) }
+          <PlaylistHeaderSearch
+            title={this.props.playlist.get('name')}
+            search={this.props.search}
+            openSearch={this.props.openSearch}
+            closeSearch={this.props.closeSearch}
+            setFilter={this.props.setFilter}
+            setSearching={this.props.setSearching}
+            ></PlaylistHeaderSearch>
+          { this.props.filteredTracks.map( (track, index) => <Track key={track.get('id')} track={track} index={index + 1} /> ) }
         </div>
       )
     }

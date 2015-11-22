@@ -37,3 +37,35 @@ export function setCurrentPlaylist(playlist) {
     payload: playlist
   };
 }
+
+export function openSearch() {
+  return {
+    type: 'OPEN_SEARCH'
+  }
+}
+
+export function closeSearch() {
+  return {
+    type: 'CLOSE_SEARCH'
+  }
+}
+
+export function setFilter(query) {
+  return {
+    type: 'SET_FILTER',
+    payload: query
+  }
+}
+
+// Should be a middleware too
+export function setSearching(query) {
+  return {
+    type: 'SET_SEARCHING',
+    payload: query,
+    api_call: {
+      verb: 'GET',
+      path: '/search?q=' + query,
+      callback: 'SET_SEARCH_RESULTS'
+    }
+  }
+}

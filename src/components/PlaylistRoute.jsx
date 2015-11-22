@@ -19,7 +19,9 @@ export const PlaylistRoute = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    playlist: state.get('playlist')
+    playlist: state.get('playlist'),
+    filteredTracks: state.get('filteredTracks'),
+    search: state.get('search')
   };
 }
 

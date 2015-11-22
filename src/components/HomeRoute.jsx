@@ -18,8 +18,8 @@ export const HomeRoute = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    playlists: state.get('playlists'),
-    loaded: state.get('playlistsLoaded')
+    loaded: state.getIn(['playlists', 'loaded']),
+    playlists: state.getIn(['playlists', 'nearest'])
   };
 }
 
