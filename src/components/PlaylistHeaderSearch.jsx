@@ -1,6 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Header from './Header';
+import Icon from './Icon';
 
 const styles = {
   container: {
@@ -52,7 +53,8 @@ export default React.createClass({
 
   getInitialState: function() {
     return {
-      timer: null
+      timer: null,
+      currentlySearching: null,
     };
   },
 
@@ -64,6 +66,7 @@ export default React.createClass({
   _handleStopSearch: function() {
     console.log('Stopping search');
     clearTimeout(this.state.timer);
+    this.setState({currentlySearching: null});
     this.props.closeSearch();
   },
 
@@ -76,8 +79,12 @@ export default React.createClass({
 
   _handleQueryOver: function() {
     console.log('Query over');
+    var query = this.props.search.get('query');
     clearTimeout(this.state.timer);
-    this.props.setSearching(this.props.search.get('query'));
+    if (query !== this.state.currentlySearching) {
+      this.setState({currentlySearching: query});
+      this.props.setSearching(query);
+    }
   },
 
   renderWithSearch: function() {
@@ -93,7 +100,7 @@ export default React.createClass({
                  style={styles.input}></input>
         </div>
         <div style={styles.containerRight} onClick={this.props.onAction}>
-          <i className={"fa " + ( this.props.search.get('searching') ? "fa-circle-o-notch" : "fa-close" )} onClick={this._handleStopSearch}></i>
+          <Icon name={this.props.search.get('searching') ? 'spinner' : 'close'} onClick={this._handleStopSearch} />
         </div>
       </div>
     );
@@ -106,7 +113,7 @@ export default React.createClass({
           {this.props.title}
         </div>
         <div style={styles.containerRight} onClick={this.props.onAction}>
-          <i className="fa fa-search" onClick={this._handleStartSearch} onChange={this._handleQueryChange} onBlur={this._handleQueryOver}></i>
+          <Icon name={'search'} onClick={this._handleStartSearch} onChange={this._handleQueryChange} onBlur={this._handleQueryOver} />
         </div>
       </div>
     );

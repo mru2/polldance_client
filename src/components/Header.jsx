@@ -1,5 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import Icon from './Icon';
 
 const styles = {
   container: {
@@ -50,7 +51,7 @@ export default React.createClass({
           {this.props.title}
         </div>
         <div style={styles.containerRight} onClick={this.props.onAction}>
-          <i className="fa fa-refresh" onClick={this._handleReload}></i>
+          <Icon name='refresh' onClick={this._handleReload} />
         </div>
       </div>
     )

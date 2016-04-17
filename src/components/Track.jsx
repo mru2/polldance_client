@@ -12,7 +12,7 @@ export default React.createClass({
   render: function() {
     return <LineItem firstLine={this.props.track.get('title')}
                      secondLine={this.props.track.get('artist')}
-                     icon={ (this.props.track.get('from') == 'playlist') ? 'heart' : 'plus' }
+                     icon={ (this.props.track.get('from') == 'playlist') ? 'like' : 'add' }
                      onAction={this._handleVote}
                      index={this.props.index}></LineItem>
   }

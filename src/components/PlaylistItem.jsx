@@ -12,7 +12,7 @@ export default React.createClass({
   render: function() {
     return <LineItem firstLine={this.props.playlist.get('name')}
                      secondLine={this.props.playlist.get('dist') + " meters away"}
-                     icon={"angle-right"}
+                     icon='next'
                      onAction={this._handleJoin}
                      index={this.props.index}></LineItem>
   }

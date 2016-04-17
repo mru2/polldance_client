@@ -1,5 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import Icon from './Icon';
 
 const styles = {
   container: {
@@ -70,7 +71,7 @@ export default React.createClass({
           <div style={styles.secondLine}>{this.props.secondLine}</div>
         </div>
         <div style={styles.containerRight} onClick={this.props.onAction}>
-          <i className={"fa fa-" + this.props.icon} style={styles.icon}></i>
+          <Icon name={this.props.icon} style={styles.icon} />
         </div>
       </div>
     )
